@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+</head>
+<body>
+    
+    <h1> <img class="HAWK" src="images.png" alt="">HAWK EYE</h1>
+    <div x-data="{ username: '', 
+    password: '', 
+    login: '', 
+    log(){          //calling an api and how we can host a widget inside of express
+        axios
+            .get(`/api/log?username=${this.username}&passwprd=${this.password}`)  //calling the api that we created
+            .then((result) => {
+            //alert(result.data.message);
+            this.log = result.data.message
+            this.username = '';
+            this.password = '';
+
+        });
+} } ">
+
+        <div class="log" x-text="login">
+
+        </div>
+        <div>
+            <div class="text">
+                <label for="">USERNAME</label>
+                <input type="text" x-model="username">
+            </div>
+            <div class="text">
+                <label for="">PASSWORD</label>
+                <input type="text" x-model="password">
+            </div>
+            <div>
+                <button x-on:click="log" >LOGIN </button>
+            </div>
+        </div>
+
+
+
+    </div>
+</body>
+
+<script>
+    axios
+        .get('/api/log?username=Thobile&password=patata@3')
+        .then(function (result) {
+            alert(result.data.message);
+
+        });
+</script>
+
+</body>
+</html>

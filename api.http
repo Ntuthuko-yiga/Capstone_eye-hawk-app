@@ -1,0 +1,8 @@
+POST http://localhost:6780/api/hawkeye HTTP/1.1
+content-type: application/json
+
+{
+    "password": "sepedi@1",
+    "log": "Ben@35"
+
+}
