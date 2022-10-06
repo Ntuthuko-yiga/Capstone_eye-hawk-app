@@ -1,6 +1,5 @@
 import express from 'express';
-import LogRocket from 'logrocket';
-LogRocket.init('kh7eu2/hawk-eye');
+
 
 const app = express();
 
