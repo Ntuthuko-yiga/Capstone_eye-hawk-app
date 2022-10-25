@@ -9,10 +9,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 
-// simple route
-app.get('/api/hawkeye', (req, res) => {
-    res.json({ message: "Welcome to Hawk Eye application." });
-});
+
 
 // set port, listen for requests
 const PORT = process.env.PORT || 6780;
@@ -20,9 +17,20 @@ app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}.`);
 });
 
+// simple route
+app.get('/api/hawkeye', function (req, res) {
+
+    const services = req.query.services;     //takes a sentence
+
+    if (!services) {
+        res.json({
+            error: 'Pleases click a service'
+        })
+    }
 
 
-app.post('/api/hawkeye', function (req, res) {
+
+app.get('/api/hawkeye', function (req, res) {
 
     console.log(req.body);
 
@@ -46,5 +54,5 @@ app.get('/api/hawkeye/:username', function (req, res) {   //placeholder
         message: 'Welcome Back, ' + username
     });
 });
+})
 
-    //app.listen(PORT, () => console.log(`App started on ${PORT}`));
